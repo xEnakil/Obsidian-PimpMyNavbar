@@ -1,0 +1,217 @@
+:root {
+    /* Letter-based Color Gradient */
+    --mint: #52eea3;         /* A–C */
+    --cyan: #51e1e9;         /* D–F */
+    --light-blue: #54b6f8;   /* G–I */
+    --blue: #437cf3;         /* J–L */
+    --violet: #9446f8;       /* M–O */
+    --purple: #c952ed;       /* P–R */
+    --magenta: #e54f9b;      /* S–U */
+    --hot-red: #e3365e;      /* V–X */
+    --cool-gray: #515768;    /* Y–Z */
+  
+    --default-text-color: #d0d0d0;
+    --highlight: #fff;
+    --shadow: #0b0c2c;
+  
+    --nav-item-weight-hover: bold;
+  }
+  
+  /* -----------------------------------------
+     Auto-numbering folders visually with nesting
+  ----------------------------------------- */
+  
+  /* 
+  Old style Uncomment if you want folders to be 1 , 2 , 3
+  .nav-files-container {
+    counter-reset: root-counter;
+  }
+  
+  .nav-folder-children {
+    counter-reset: subfolder-counter;
+  }
+  
+  .nav-folder-title[data-path]:not([data-path*="/"]):before {
+    counter-increment: root-counter;
+    content: counter(root-counter) " - ";
+    color: var(--cool-gray);
+    margin-right: 4px;
+    font-weight: bold;
+  }
+  
+  .nav-folder-title[data-path*="/"]:before {
+    counter-increment: subfolder-counter;
+    content: counter(subfolder-counter) "-";
+    color: var(--cool-gray);
+    margin-right: 4px;
+    font-weight: bold;
+  } */
+  
+  /* -----------------------------------------
+     Auto-numbering folders visually – 01, 02…
+     Comment and uncomment the previous one if
+     you prefer to use old style.
+  ----------------------------------------- */
+  
+  .nav-files-container      { counter-reset: root-counter; }
+  .nav-folder-children      { counter-reset: subfolder-counter; }
+  
+  .nav-folder-title[data-path]:not([data-path*="/"])::before{
+    counter-increment: root-counter;
+    content: counter(root-counter, decimal-leading-zero) " - ";
+    color: var(--cool-gray);
+    margin-right: 4px;
+    font-weight: bold;
+  }
+  
+  .nav-folder-title[data-path*="/"]::before{
+    counter-increment: subfolder-counter;
+    content: counter(subfolder-counter, decimal-leading-zero) ".";
+    color: var(--cool-gray);
+    margin-right: 4px;
+    font-weight: bold;
+  }
+  
+  /* -----------------------------------------
+     Basic spacing & styling
+  ----------------------------------------- */
+  .nav-folder-title {
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .nav-file-title,
+    .nav-folder-title {
+      padding-top: 3px !important;
+      padding-right: 5px !important;
+      padding-bottom: 2px !important;
+      padding-left: 15px;
+    }
+  }
+  
+  /* -----------------------------------------
+     A–Z: Color by first character of folder title
+  ----------------------------------------- */
+  
+  /* A–C: Mint */
+  .nav-folder-title[data-path^="A"],
+  .nav-folder-title[data-path^="B"],
+  .nav-folder-title[data-path^="C"] {
+    color: var(--mint);
+    --nav-folder-color: var(--mint);
+  }
+  
+  /* D–F: Cyan */
+  .nav-folder-title[data-path^="D"],
+  .nav-folder-title[data-path^="E"],
+  .nav-folder-title[data-path^="F"] {
+    color: var(--cyan);
+    --nav-folder-color: var(--cyan);
+  }
+  
+  /* G–I: Light Blue */
+  .nav-folder-title[data-path^="G"],
+  .nav-folder-title[data-path^="H"],
+  .nav-folder-title[data-path^="I"] {
+    color: var(--light-blue);
+    --nav-folder-color: var(--light-blue);
+  }
+  
+  /* J–L: Blue */
+  .nav-folder-title[data-path^="J"],
+  .nav-folder-title[data-path^="K"],
+  .nav-folder-title[data-path^="L"] {
+    color: var(--blue);
+    --nav-folder-color: var(--blue);
+  }
+  
+  /* M–O: Violet */
+  .nav-folder-title[data-path^="M"],
+  .nav-folder-title[data-path^="N"],
+  .nav-folder-title[data-path^="O"] {
+    color: var(--violet);
+    --nav-folder-color: var(--violet);
+  }
+  
+  /* P–R: Purple */
+  .nav-folder-title[data-path^="P"],
+  .nav-folder-title[data-path^="Q"],
+  .nav-folder-title[data-path^="R"] {
+    color: var(--purple);
+    --nav-folder-color: var(--purple);
+  }
+  
+  /* S–U: Magenta */
+  .nav-folder-title[data-path^="S"],
+  .nav-folder-title[data-path^="T"],
+  .nav-folder-title[data-path^="U"] {
+    color: var(--magenta);
+    --nav-folder-color: var(--magenta);
+  }
+  
+  /* V–X: Hot Red */
+  .nav-folder-title[data-path^="V"],
+  .nav-folder-title[data-path^="W"],
+  .nav-folder-title[data-path^="X"] {
+    color: var(--hot-red);
+    --nav-folder-color: var(--hot-red);
+  }
+  
+  /* Y–Z: Cool Gray */
+  .nav-folder-title[data-path^="Y"],
+  .nav-folder-title[data-path^="Z"] {
+    color: var(--cool-gray);
+    --nav-folder-color: var(--cool-gray);
+  }
+  
+  /* -----------------------------------------
+     Hover, Active, Indents, File Inheritance
+  ----------------------------------------- */
+  
+  .nav-folder-title[data-path^="A"],
+  .nav-folder-title[data-path^="B"],
+  .nav-folder-title[data-path^="C"],
+  .nav-folder-title[data-path^="D"],
+  .nav-folder-title[data-path^="E"],
+  .nav-folder-title[data-path^="F"],
+  .nav-folder-title[data-path^="G"],
+  .nav-folder-title[data-path^="H"],
+  .nav-folder-title[data-path^="I"],
+  .nav-folder-title[data-path^="J"],
+  .nav-folder-title[data-path^="K"],
+  .nav-folder-title[data-path^="L"],
+  .nav-folder-title[data-path^="M"],
+  .nav-folder-title[data-path^="N"],
+  .nav-folder-title[data-path^="O"],
+  .nav-folder-title[data-path^="P"],
+  .nav-folder-title[data-path^="Q"],
+  .nav-folder-title[data-path^="R"],
+  .nav-folder-title[data-path^="S"],
+  .nav-folder-title[data-path^="T"],
+  .nav-folder-title[data-path^="U"],
+  .nav-folder-title[data-path^="V"],
+  .nav-folder-title[data-path^="W"],
+  .nav-folder-title[data-path^="X"],
+  .nav-folder-title[data-path^="Y"],
+  .nav-folder-title[data-path^="Z"] {
+    --nav-item-color-hover: color-mix(in srgb, var(--nav-folder-color) var(--fg-contrast-amount), var(--contrast-color));
+    --nav-item-background-hover: color-mix(in srgb, var(--nav-folder-color) var(--bg-contrast-amount), transparent);
+    --background-modifier-border-focus: color-mix(in srgb, var(--nav-folder-color) 40%, transparent);
+    --nav-collapse-icon-color: color-mix(in srgb, var(--nav-folder-color) 60%, transparent);
+  }
+  
+  .nav-folder-title:hover {
+    --nav-collapse-icon-color: color-mix(in srgb, var(--nav-folder-color) 60%, var(--contrast-color));
+  }
+  
+  .tree-item-children .nav-folder:has(.nav-folder-title) {
+    --nav-indentation-guide-color: color-mix(in srgb, var(--nav-folder-color) var(--medium-contrast-amount), transparent);
+  }
+  
+  .tree-item-children .nav-folder:has(.nav-folder-title) .nav-file-title {
+    color: color-mix(in srgb, var(--nav-folder-color) var(--medium-contrast-amount), var(--default-text-color));
+    --nav-item-background-hover: color-mix(in srgb, color-mix(in srgb, var(--nav-folder-color) 50%, var(--highlight)) var(--bg-contrast-amount), transparent);
+    --background-modifier-border-focus: color-mix(in srgb, var(--nav-folder-color) 40%, transparent);
+    --nav-item-background-active: color-mix(in srgb, var(--nav-folder-color) var(--active-contrast-amount), transparent);
+  }
